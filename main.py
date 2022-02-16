@@ -60,7 +60,7 @@ def average_rgb(block, folder='blocks') -> list:
     colors = block_image.getcolors()
     if colors == None:
         return [9999, 9999, 9999]
-    if not 255 in [x[1][3] for x in colors]:
+    if any(alpha < 255 for alpha in [x[1][3] for x in colors]):
         return [9999, 9999, 9999]
     weights = [x[0] for x in colors]
     rgb = []
