@@ -15,7 +15,7 @@ def open_skin(filename: str) -> Image:
 
 def get_colors(base_skin: Image) -> dict:
     block_rgbs = load_block_rgbs()
-    colors = base_skin.getcolors()
+    colors = base_skin.getcolors(4096)
     colors = [x[1] for x in colors]
     colors = {rgb2hex(x): find_closest_block(x, block_rgbs) for x in colors}
     #colors = {rgb2hex(x): "block" for x in colors}
